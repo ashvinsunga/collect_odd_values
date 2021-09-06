@@ -1,25 +1,44 @@
 // THE GOAL OF THIS FUNCTION
 // The function accepts an array and returns all the odd values from it
 
+// Using Helper Recursion Method
+// function collectOddValues(arr){
+
+//     let result = [];
+
+//     function helper(helperInput){
+//         if(helperInput.length === 0) {
+//             return;
+//         }
+
+//         if(helperInput[0] % 2 !== 0){
+//             result.push(helperInput[0])
+//         }
+
+//         helper(helperInput.slice(1))
+//     }
+
+//     helper(arr)
+
+//     return result;
+// }
+
+
+// Using Pure Recursion
 function collectOddValues(arr){
+    
+    let newArr = [];
 
-    let result = [];
-
-    function helper(helperInput){
-        if(helperInput.length === 0) {
-            return;
-        }
-
-        if(helperInput[0] % 2 !== 0){
-            result.push(helperInput[0])
-        }
-
-        helper(helperInput.slice(1))
+    if(arr.length === 0) {
+        return newArr;
     }
 
-    helper(arr)
+    if(arr[0] % 2 !== 0){
+        newArr.push(arr[0]);
+    }
 
-    return result;
+    newArr = newArr.concat(collectOddValues(arr.slice(1)));
+    return newArr;
 }
 
 console.log(collectOddValues([1,2,3,4,5,6,7,8,9]));
